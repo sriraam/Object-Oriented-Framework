@@ -5,11 +5,7 @@ scene* scene::instance = NULL;
 void scene::display1()
 {
 	// Camera matrix
-	View = glm::lookAt(
-		glm::vec3(camX, camY, camZ), // Camera is at (4,3,3), in World Space
-		glm::vec3(0, 0, 0), // and looks at the origin
-		glm::vec3(0, 1, 0)  // Head is up (set to 0,-1,0 to look upside-down)
-	);
+	
 	//glUseProgram(g_ShaderProgram);
 	//shader_main.Use();
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -93,7 +89,7 @@ void scene::init() {
 	//**it is used above all many vertex||color bind,databuffer and used this VetexarrayID at display func 
 	//**where we use shader object and drawarray or element
 
-	//**LOADING THE .off model file 
+	/*//**LOADING THE .off model file 
 	off_io off_loader;
 
 	ifstream inFile("cube1.off", ios::in);
@@ -109,20 +105,16 @@ void scene::init() {
 		std::cout << "OFF File is loaded successfully";
 
 	}
-
+	*/
 
 	// Generate 1 buffer, put the resulting identifier in vertexbuffer
 	glGenBuffers(1, &VertexBuffer);
-	glGenBuffers(1, &normalBuffer);
-	glGenBuffers(1, &modelBuffer);
+	//glGenBuffers(1, &normalBuffer);
+	//glGenBuffers(1, &modelBuffer);
 
        
 
-	// set the camera position based on its spherical coordinates
-	camX = r * sin(alpha * 3.14f / 180.0f) * cos(beta * 3.14f / 180.0f);
-	camZ = r * cos(alpha * 3.14f / 180.0f) * cos(beta * 3.14f / 180.0f);
-	camY = r *   						     sin(beta * 3.14f / 180.0f);
-
+	
 
 	// some GL settings
 	glEnable(GL_DEPTH_TEST);
@@ -256,7 +248,7 @@ void scene::init() {
 	glBindVertexArray(0);
 	*/
 	// Then, we set the light's VAO (VBO stays the same. After all, the vertices are the same for the light object (also a 3D cube))
-
+/*
 	glGenVertexArrays(1, &lightVAO);
 	glBindVertexArray(lightVAO);
 
@@ -278,9 +270,9 @@ void scene::init() {
 	glEnableVertexAttribArray(0);
 
 
-	/*glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, model.nTris * sizeof(GLuint) * 3, model.pIndices, GL_STATIC_DRAW);
-	*/
+	
 
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
@@ -291,6 +283,7 @@ void scene::init() {
 	glBindVertexArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	 */
 	//glDisableVertexArrayAttrib(1);
 	//glDisableVertexArrayAttrib(0);
 	/*glBindVertexArray(normalVAO);
@@ -305,9 +298,7 @@ void scene::init() {
 	//second vertex buffer for inverted triangle
 	//how to display them
 
-
-
-	Projection = glm::perspective(glm::radians(45.0f), (float)640 / (float)480, 0.1f, 100.0f);
+                  
 
 	// Or, for an ortho camera :
 	//glm::mat4 Projection = glm::ortho(-10.0f,10.0f,-10.0f,10.0f,0.0f,100.0f); // In world coordinates

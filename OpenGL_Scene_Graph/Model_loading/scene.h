@@ -16,9 +16,9 @@
 #include<vector>
 //#include<string>
 #include"shader.h"
+#include"camera.h"
 
-
-#include "off_io.h"
+//#include "off_io.h"
 
 class scene
 {
@@ -32,9 +32,7 @@ public:
 	GLuint lightVAO;
 	GLuint normalVAO;
 
-	//GLfloat pNormals[];
-	LoadData mod_data;
-	graphicData model;
+	
 
 
 	glm::mat4 View, Model, Projection;
@@ -52,9 +50,9 @@ public:
 
 	GLuint VertexBuffer;
 	GLuint VertexBuffer2;
-	GLuint normalBuffer;
-	GLuint modelBuffer;
-	GLuint elementbuffer;
+	//GLuint normalBuffer;
+	//GLuint modelBuffer;
+	//GLuint elementbuffer;
 
 	bool spec_bool;
 	bool diff_bool;
@@ -66,14 +64,12 @@ public:
 
 	bool use_normals ;
 	// Camera Position
-	float camX, camY, camZ;
+	
 
 	// Mouse Tracking Variables
 	int startX, startY, tracking ;
 
-	// Camera Spherical Coordinates
-	float alpha , beta ;
-	float r ;
+
 
 	// Light attributes
 	glm::vec3 lightPos;
